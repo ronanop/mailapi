@@ -1,0 +1,42 @@
+{
+  "name": "mailapi",
+  "version": "1.0.0",
+  "description": "Selective Microsoft Graph mail sharing proxy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@azure/msal-node": "^7.2.2",
+    "@microsoft/microsoft-graph-client": "^3.1.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0",
+    "helmet": "^8.3.0",
+    "isomorphic-fetch": "^3.0.0",
+    "nanoid": "^6.0.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/express-session": "^1.19.0",
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "better-sqlite3@13.2.0": true,
+    "esbuild@0.28.2": true
+  }
+}

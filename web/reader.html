@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MailAPI Reader</title>
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <div class="brand">
+        <h1>MailAPI</h1>
+        <span>Shared mail reader</span>
+      </div>
+      <p class="lede">
+        You can only open mails included in the share token you were given. Other mailbox content
+        stays private.
+      </p>
+
+      <section class="card">
+        <h2>Access token</h2>
+        <div class="row">
+          <input id="tokenInput" type="text" placeholder="Paste share token" />
+          <button id="loadBtn">Open shared mails</button>
+        </div>
+        <p id="tokenError" class="error hidden"></p>
+        <p id="grantInfo" class="muted"></p>
+      </section>
+
+      <section id="listCard" class="card hidden">
+        <h2>Shared messages</h2>
+        <div id="mailList" class="mail-list"></div>
+      </section>
+
+      <section id="detailCard" class="card hidden">
+        <h2 id="detailSubject">Message</h2>
+        <p id="detailMeta" class="muted"></p>
+        <div id="detailBody" class="message-body"></div>
+        <div class="row" style="margin-top: 12px">
+          <button id="backBtn" class="secondary">Back to list</button>
+        </div>
+      </section>
+    </div>
+    <script src="/reader.js" type="module"></script>
+  </body>
+</html>

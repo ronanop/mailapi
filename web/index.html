@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MailAPI — Selective share admin</title>
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <div class="brand">
+        <h1>MailAPI</h1>
+        <span>Selective Microsoft 365 mail sharing</span>
+      </div>
+      <p class="lede">
+        Graph app credentials se mailbox padho, exact messages select karo, phir share tokens
+        issue karo. Recipients sirf approved mails padh sakte hain.
+      </p>
+
+      <section id="loginCard" class="card">
+        <h2>Admin login</h2>
+        <div class="row">
+          <input id="adminPassword" type="password" placeholder="Admin password" />
+          <button id="loginBtn">Sign in</button>
+        </div>
+        <p id="loginError" class="error hidden"></p>
+      </section>
+
+      <section id="appPanel" class="hidden">
+        <section class="card">
+          <h2>Mailbox (app-only Graph)</h2>
+          <div class="row" style="justify-content: space-between">
+            <div id="ownerStatus" class="pill">Checking…</div>
+            <div class="row">
+              <button id="logoutBtn" class="secondary">Logout admin</button>
+            </div>
+          </div>
+          <p id="graphError" class="error hidden"></p>
+        </section>
+
+        <section id="apiKeysPanel" class="card hidden">
+          <h2>Mailbox API keys (for other apps)</h2>
+          <p class="muted" style="margin-top: 0">
+            Downstream app is key se <strong>is mailbox</strong> ki saari mails fetch kar sakti hai —
+            Graph credentials expose nahi hote.
+          </p>
+          <div class="row" style="margin-bottom: 10px">
+            <input id="apiKeyLabel" type="text" placeholder="Label (e.g. Connect Plus ERP)" />
+            <button id="createApiKeyBtn">Create API key</button>
+          </div>
+          <p id="apiKeyMsg" class="muted"></p>
+          <div id="apiKeysList"></div>
+        </section>
+
+        <section id="mailboxPanel" class="card hidden">
+          <h2>Choose mails to share (optional selective access)</h2>
+          <div class="row" style="margin-bottom: 12px">
+            <input id="searchInput" type="search" placeholder="Search subject / sender / body" />
+            <button id="searchBtn" class="secondary">Search</button>
+            <button id="refreshBtn" class="secondary">Refresh inbox</button>
+          </div>
+          <div id="mailList" class="mail-list"></div>
+
+          <div style="margin-top: 16px; border-top: 1px solid var(--line); padding-top: 16px">
+            <h2>Create access grant</h2>
+            <div class="row" style="margin-bottom: 10px">
+              <input id="grantLabel" type="text" placeholder="Label (e.g. Vendor audit — March)" />
+              <input id="grantExpiry" type="datetime-local" title="Optional expiry" />
+            </div>
+            <div class="row" style="margin-bottom: 10px">
+              <input
+                id="grantNote"
+                type="text"
+                placeholder="Optional note for the reader"
+                style="flex: 1"
+              />
+              <button id="createGrantBtn">Create share token</button>
+            </div>
+            <p id="grantMsg" class="muted"></p>
+          </div>
+        </section>
+
+        <section id="grantsPanel" class="card hidden">
+          <h2>Active share grants</h2>
+          <div id="grantsList"></div>
+        </section>
+      </section>
+    </div>
+    <script src="/admin.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+services:
+  mailapi:
+    build: .
+    ports:
+      - "3010:3010"
+    env_file:
+      - .env
+    environment:
+      PORT: 3010
+      DATA_DIR: /app/data
+      BASE_URL: ${BASE_URL:-http://localhost:3010}
+    volumes:
+      - mailapi-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  mailapi-data:
